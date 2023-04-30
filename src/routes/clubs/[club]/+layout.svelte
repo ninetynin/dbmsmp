@@ -1,11 +1,9 @@
-<!-- <script>
-    // picocss
 
-</script> -->
 
 <style>
     @import '@picocss/pico';
 </style>
+
 
 <nav>
     <ul>
