@@ -13,9 +13,6 @@
   
   .club-article {
     border-radius: 10px; /* add rounded edges */
-
-
-    /* add any additional styles for the club articles here */
   }
 
   .fsize{
