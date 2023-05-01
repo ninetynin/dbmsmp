@@ -11,18 +11,21 @@
   {
     padding-top: 9%;
     padding-right: 5%;
-    background-color: #ffffff;
+    background-color: #11191f;
   }
   ul {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* adjust the number of columns as needed */
     grid-gap: 1rem; /* add some spacing between the articles */
+
   }
   
   .club-article {
     border-radius: 15px; /* add rounded edges */
-    background-color: #a3dffd;
-    transition: transform 0.2s ease-out; /* add transition effect */
+    background-color: #181c24;
+    transition: transform 0.2s ease-out;
+    
+    /* add transition effect */
   }
 
   .club-article:hover {
@@ -31,7 +34,7 @@
 
   .fsize{
     font-size: 80%;
-    color: black;
+    color: #fff;
   }
 
   .heading {
@@ -40,7 +43,7 @@
   left: 0;
   right: 0;
   padding-top: 10%;
-  background-color: #090b668e;
+  background-color: #11191f63;
   text-align: center;
   padding: 1rem 0;
   font-size: 2rem;
@@ -75,3 +78,6 @@
     {/each}
   </ul>
 </main>
+
+
+

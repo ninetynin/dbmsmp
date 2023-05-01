@@ -24,7 +24,8 @@
         text-align: center;
         padding-right: 2%;
         padding-top: 10%;
-        background-color: #ffffff;
+        padding-bottom: 50%;
+        background-color: #11191f48;
     }
 
     .heading {
@@ -33,7 +34,7 @@
         left: 0;
         right: 0;
         padding-top: 10%;
-        background-color: #090b66;
+        background-color: #11191f52;
         text-align: center;
         padding: 1rem 0;
         font-size: 2rem;
@@ -47,7 +48,7 @@
     .club-article {
         padding: 5%;
         border-radius: 15px; /* add rounded edges */
-        background-color: #a3dffd;
+        background-color: #181c24;
         color: #fff;
   }
     .notaccepting
@@ -60,7 +61,7 @@
     footer{
         text-align: center;
         border-radius: 15px;
-        background-color: #4436fe;
+        background-color: #2a3751;
     }
 
     h1{
@@ -76,6 +77,13 @@
     a:hover {
     text-decoration: none; /* remove underlining when hovering */
   }
+
+  .my-button {
+    width:fit-content;
+    background-color: #4436fe;
+   
+}
+
 </style>
 
 <p class="heading"><a href="/">DBMSMP</a></p>
@@ -84,15 +92,14 @@
     {#each clubs as cl}
         {#if cl.club_name === cid}
             
-        <article class="club-article">
             <h1>{cid}</h1>
-            <footer>{cl.club_desc}</footer>
-        </article>
+            {cl.club_desc}
+       
         
             <p class="desc"></p>
             <p>{cl.contact_info}</p>
             {#if cl.accepting_members}
-                <a href="{findRegLink(cl.club_id)}" role="button">Join the Club</a>
+                <button href="{findRegLink(cl.club_id)}" data-tooltip="Register Here" data-placement="top" class="my-button">Join the Club</button>
             {:else}
                 <p class="notaccepting">Not Recruiting Currently</p>
             {/if}
