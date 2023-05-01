@@ -9,9 +9,11 @@
     $: ({ reg2 } = data);
 </script>
 
+
 <style>
     .h1{
         text-align: center;
+        padding-right: 2%;
     }
 
     .club-article {
@@ -25,7 +27,7 @@
         font-weight: normal;
     }
 
-    .footer{
+    footer{
         text-align: center;
     }
 </style>
@@ -37,8 +39,9 @@
             
         <article class="club-article">
             <h1>{cid}</h1>
-        <footer>{cl.club_desc}</footer>
+            <footer>{cl.club_desc}</footer>
         </article>
+        
             <p class="desc"></p>
             <p>{cl.contact_info}</p>
             {#if cl.accepting_members}

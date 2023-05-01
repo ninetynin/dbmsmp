@@ -4,7 +4,14 @@
   $: ({ club } = data);
 </script>
 
+
 <style>
+
+  .container-fluid
+  {
+    padding-top: 10%;
+    padding-right: 3%;
+  }
   ul {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* adjust the number of columns as needed */
@@ -19,9 +26,8 @@
     font-size: 80%;
   }
 
-
   .heading {
-  position: sticky;
+  position:fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -30,7 +36,7 @@
   padding: 1rem 0;
   font-size: 2rem;
   font-weight: bolder;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(3px);
   font: italic;
   font-family:monospace;
 }
@@ -46,7 +52,6 @@
 
 <p class="heading">CLUB</p>
 <main class="container-fluid">
-
   <ul>
     {#each club as cl}
       <article class="club-article">
