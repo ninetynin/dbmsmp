@@ -1,4 +1,4 @@
-
+<!-- 
 
 <style>
     @import '@picocss/pico';
@@ -23,8 +23,6 @@
     }
 </style>
 
-     <h1 class="heading"><a href="/">CLUB</a></h1>
+     <h1 class="heading"><a href="/">DBS MP</a></h1> -->
 
-<main>
     <slot/>
-</main>
