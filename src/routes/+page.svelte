@@ -15,14 +15,13 @@
   }
   ul {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* adjust the number of columns as needed */
+    grid-template-columns: repeat(3, 1fr); /* adjust the number of columns as needed */
     grid-gap: 1rem; /* add some spacing between the articles */
 
   }
   
   .club-article {
     border-radius: 15px; /* add rounded edges */
-    background-color: #181c24;
     transition: transform 0.2s ease-out;
     
     /* add transition effect */
@@ -56,7 +55,7 @@
 
   a {
     text-decoration: none; 
-    color: #4436fe;
+    color: #1487af;
     font-weight: bold;;
     /* remove underlining for all links */
   }

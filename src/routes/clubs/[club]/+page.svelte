@@ -65,7 +65,7 @@
     }
 
     h1{
-        color: #4436fe;
+        color: #1487af;
     }
 
     a{
