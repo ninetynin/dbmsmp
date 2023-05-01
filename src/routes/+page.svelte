@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   export let data;
   let { club } = data;
   $: ({ club } = data);
@@ -19,16 +19,21 @@
     font-size: 80%;
   }
 
+
   .heading {
-    position: sticky;
-    top: 0;
-    background-color: rgba(17, 25, 30, 0.5); 
-    text-align: center;
-    padding: 1rem 0;
-    font-size: 2rem;
-    font-weight: bold;
-    backdrop-filter: blur(5px);
-  }
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(17, 25, 30, 0.83); 
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 2rem;
+  font-weight: bolder;
+  backdrop-filter: blur(5px);
+  font: italic;
+  font-family:monospace;
+}
 
   a {
     text-decoration: none; /* remove underlining for all links */
@@ -39,8 +44,9 @@
   }
 </style>
 
+<p class="heading">CLUB</p>
 <main class="container-fluid">
-  <h1 class="heading">CLUB</h1>
+
   <ul>
     {#each club as cl}
       <article class="club-article">

@@ -9,19 +9,47 @@
     $: ({ reg2 } = data);
 </script>
 
-<h1>Club: {cid}</h1>
+<style>
+    .h1{
+        text-align: center;
+    }
 
-<ul>
+    .club-article {
+        padding: 5%;
+        border-radius: 10px; /* add rounded edges */
+  }
+    .notaccepting
+    {
+        text-align: center;
+        color: crimson;
+        font-weight: normal;
+    }
+
+    .footer{
+        text-align: center;
+    }
+</style>
+
+
+<ul class="h1">
     {#each club2 as cl}
         {#if cl.club_name === cid}
-            <h4>{cl.club_desc}</h4>
-            <h5>{cl.contact_info}</h5>
+            
+        <article class="club-article">
+            <h1>{cid}</h1>
+        <footer>{cl.club_desc}</footer>
+        </article>
+            <p class="desc"></p>
+            <p>{cl.contact_info}</p>
             {#if cl.accepting_members}
                 <!-- <h5>Accepting Members</h5> -->
-                <!-- <a href="/clubs/{cl.club_name}/join">Join</a> -->
+                
+                        <a href="/clubs/{cl.club_name}/join" role="button">Join the Club</a>
+                
             {:else}
-                <h5>Not Accepting Members</h5>
+                <p class="notaccepting">Not Recruiting Currently</p>
             {/if}
         {/if}
     {/each}
 </ul>
+
