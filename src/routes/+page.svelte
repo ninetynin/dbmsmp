@@ -2,6 +2,10 @@
   export let data;
   let { club } = data;
   $: ({ club } = data);
+
+  function navigateToClub(club_name: any) {
+    window.location.href = `/clubs/${club_name}`;
+  }
 </script>
 
 <style>
@@ -12,45 +16,31 @@
   }
   
   .club-article {
-    border-radius: 10px; /* add rounded edges */
+    border-radius: 10px; 
   }
 
   .fsize{
     font-size: 80%;
   }
 
-
-  /* .heading {
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(17, 25, 30, 0.83); 
-  text-align: center;
-  padding: 1rem 0;
-  font-size: 2rem;
-  font-weight: bolder;
-  backdrop-filter: blur(5px);
-  font: italic;
-  font-family:monospace;
-} */
+.club-article:hover {
+  transform: scale(1.005);
+}
 
   a {
-    text-decoration: none; /* remove underlining for all links */
+    text-decoration: none; 
   }
 
   a:hover {
-    text-decoration: none; /* remove underlining when hovering */
+    text-decoration: none; 
   }
 </style>
 
-<!-- <p class="heading">DBS MP</p> -->
 <main class="container-fluid">
-
   <ul>
     {#each club as cl}
-      <article class="club-article">
-        <a href="/clubs/{cl.club_name}">{cl.club_name}</a>
+      <article class="club-article" on:click={() => navigateToClub(cl.club_name)}>
+        <a>{cl.club_name}</a>
         <br> <br>
         <p class="fsize">{cl.club_desc}</p>
       </article>
