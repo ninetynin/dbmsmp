@@ -1,32 +1,59 @@
-<script>
-    export let data;
-    let { club } = data;
-    $: ({ club } = data);
-  </script>
+<script lang="ts">
+  export let data;
+  let { club } = data;
+  $: ({ club } = data);
+</script>
 
-  <style>
-    div {
-  display: flex;
-  flex-wrap: wrap;
+<style>
+  ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* adjust the number of columns as needed */
+    grid-gap: 1rem; /* add some spacing between the articles */
+  }
+  
+  .club-article {
+    border-radius: 10px; /* add rounded edges */
+  }
+
+  .fsize{
+    font-size: 80%;
+  }
+
+
+  .heading {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(17, 25, 30, 0.83); 
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 2rem;
+  font-weight: bolder;
+  backdrop-filter: blur(5px);
+  font: italic;
+  font-family:monospace;
 }
 
-article {
-  flex: 1 4 30%;
-  max-width: 30%;
-}
-  </style>
-<main class="container">
+  a {
+    text-decoration: none; /* remove underlining for all links */
+  }
+
+  a:hover {
+    text-decoration: none; /* remove underlining when hovering */
+  }
+</style>
+
+<p class="heading">CLUB</p>
+<main class="container-fluid">
+
   <ul>
     {#each club as cl}
-        <!-- <a href="/clubs/{cl.club_name}">{cl.club_name}</a>
-        <br> -->
-        <div>
-            <article>
-                <a href="/clubs/{cl.club_name}">
-                    <h2>{cl.club_name}</h2>
-                </a>
-            </article>
-        </div>
+      <article class="club-article">
+        <a href="/clubs/{cl.club_name}">{cl.club_name}</a>
+        <br> <br>
+        <p class="fsize">{cl.club_desc}</p>
+      </article>
     {/each}
   </ul>
 </main>
