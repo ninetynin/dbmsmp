@@ -1,10 +1,14 @@
 import { supabase } from "$lib/supabaseClient";
 
 export async function load() {
-  const { data } = await supabase.from("club").select();
-  const { regs } = await supabase.from("registration").select();
+  const { data: clubs } = await supabase.from("club").select();
+  const { data: regs } = await supabase.from("registration").select(); // use 'data' property to access registration data
+  const { data: evnts } = await supabase.from("event").select(); // use 'data' property to access event data
+  const { data: advisr } = await supabase.from("advisor").select(); // use 'data' property to access advisor data
   return {
-    club2: data ?? [],
-    reg2: regs ?? [],
+    clubs: clubs ?? [],
+    registrations: regs ?? [],
+    events: evnts ?? [],
+    advisors: advisr ?? [],
   };
 }

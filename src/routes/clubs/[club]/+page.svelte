@@ -3,15 +3,24 @@
     const cid = $page.params.club;
 
     export let data;
-    let { club2 } = data;
-    $: ({ club2 } = data);
-    let { reg2 } = data;
-    $: ({ reg2 } = data);
+    let { clubs,registrations,events,advisors } = data;
+    $: ({ clubs,registrations,events,advisors } = data);
+    // console.log(registrations.length);
+    // console.log(clubs.length);
+
+    const findRegLink = (/** @type {any} */ cid) => {
+        for (let i = 0; i < registrations.length; i++) {
+            if (registrations[i].club_id === cid) {
+                return registrations[i].registration_link;
+            }
+        }
+    };
+
 </script>
 
 
 <style>
-    .h1{
+    .h234{
         text-align: center;
         padding-right: 2%;
     }
@@ -32,9 +41,8 @@
     }
 </style>
 
-
-<ul class="h1">
-    {#each club2 as cl}
+<ul class="h234">
+    {#each clubs as cl}
         {#if cl.club_name === cid}
             
         <article class="club-article">
@@ -45,14 +53,10 @@
             <p class="desc"></p>
             <p>{cl.contact_info}</p>
             {#if cl.accepting_members}
-                <!-- <h5>Accepting Members</h5> -->
-                
-                        <a href="/clubs/{cl.club_name}/join" role="button">Join the Club</a>
-                
+                <a href="{findRegLink(cl.club_id)}" role="button">Join the Club</a>
             {:else}
                 <p class="notaccepting">Not Recruiting Currently</p>
             {/if}
         {/if}
     {/each}
 </ul>
-
