@@ -20,7 +20,7 @@
   }
 
 
-  .heading {
+  /* .heading {
   position: sticky;
   top: 0;
   left: 0;
@@ -33,7 +33,7 @@
   backdrop-filter: blur(5px);
   font: italic;
   font-family:monospace;
-}
+} */
 
   a {
     text-decoration: none; /* remove underlining for all links */
@@ -44,7 +44,7 @@
   }
 </style>
 
-<p class="heading">CLUB</p>
+<!-- <p class="heading">DBS MP</p> -->
 <main class="container-fluid">
 
   <ul>
