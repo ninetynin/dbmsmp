@@ -78,11 +78,7 @@
     text-decoration: none; /* remove underlining when hovering */
   }
 
-  .my-button {
-    width:fit-content;
-    background-color: #4436fe;
-   
-}
+
 
 </style>
 
@@ -99,7 +95,7 @@
             <p class="desc"></p>
             <p>{cl.contact_info}</p>
             {#if cl.accepting_members}
-                <button href="{findRegLink(cl.club_id)}" data-tooltip="Register Here" data-placement="top" class="my-button">Join the Club</button>
+                <a href="{findRegLink(cl.club_id)}" role="button">Join the Club</a>
             {:else}
                 <p class="notaccepting">Not Recruiting Currently</p>
             {/if}
