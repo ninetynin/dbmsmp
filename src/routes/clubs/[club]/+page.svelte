@@ -23,11 +23,32 @@
     .h234{
         text-align: center;
         padding-right: 2%;
+        padding-top: 10%;
+        background-color: #ffffff;
     }
+
+    .heading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding-top: 10%;
+        background-color: #090b66;
+        text-align: center;
+        padding: 1rem 0;
+        font-size: 2rem;
+        font-weight: bolder;
+        backdrop-filter: blur(3px);
+        font: italic;
+        font-family:monospace;
+        color: #ffffff;
+} 
 
     .club-article {
         padding: 5%;
-        border-radius: 10px; /* add rounded edges */
+        border-radius: 15px; /* add rounded edges */
+        background-color: #a3dffd;
+        color: #fff;
   }
     .notaccepting
     {
@@ -38,8 +59,26 @@
 
     footer{
         text-align: center;
+        border-radius: 15px;
+        background-color: #4436fe;
     }
+
+    h1{
+        color: #4436fe;
+    }
+
+    a{
+        text-decoration: none; 
+        color: #fff;
+        font-weight: bold;;
+    }
+
+    a:hover {
+    text-decoration: none; /* remove underlining when hovering */
+  }
 </style>
+
+<p class="heading"><a href="/">DBMSMP</a></p>
 
 <ul class="h234">
     {#each clubs as cl}

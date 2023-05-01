@@ -9,29 +9,38 @@
 
   .container-fluid
   {
-    padding-top: 10%;
-    padding-right: 3%;
+    padding-top: 9%;
+    padding-right: 5%;
+    background-color: #ffffff;
   }
   ul {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* adjust the number of columns as needed */
+    grid-template-columns: repeat(4, 1fr); /* adjust the number of columns as needed */
     grid-gap: 1rem; /* add some spacing between the articles */
   }
   
   .club-article {
-    border-radius: 10px; /* add rounded edges */
+    border-radius: 15px; /* add rounded edges */
+    background-color: #a3dffd;
+    transition: transform 0.2s ease-out; /* add transition effect */
   }
+
+  .club-article:hover {
+  transform: scale(1.05); /* enlarge on hover */
+}
 
   .fsize{
     font-size: 80%;
+    color: black;
   }
 
   .heading {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background-color: rgba(17, 25, 30, 0.83); 
+  padding-top: 10%;
+  background-color: #090b668e;
   text-align: center;
   padding: 1rem 0;
   font-size: 2rem;
@@ -39,10 +48,14 @@
   backdrop-filter: blur(3px);
   font: italic;
   font-family:monospace;
-} */
+  color: #ffffff;
+} 
 
   a {
-    text-decoration: none; /* remove underlining for all links */
+    text-decoration: none; 
+    color: #4436fe;
+    font-weight: bold;;
+    /* remove underlining for all links */
   }
 
   a:hover {
@@ -50,7 +63,7 @@
   }
 </style>
 
-<!-- <p class="heading">DBS MP</p> -->
+<p class="heading">DBMSMP</p>
 <main class="container-fluid">
   <ul>
     {#each club as cl}

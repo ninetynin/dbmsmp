@@ -20,6 +20,6 @@
     }
 </style>
 
-     <h1 class="heading"><a href="/">DBS MP</a></h1>
+     <!-- <h1 class="heading"><a href="/">DBMSMP</a></h1> -->
 
 <slot />
