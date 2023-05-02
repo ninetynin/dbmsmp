@@ -25,6 +25,22 @@
         }
         return eventsArr;
     };
+
+    // function Modifycluburl() {
+    //     // window.location.href = `/clubs/${cid}/modify`;
+    //     window.location.href = `/clubs/${cid}/modify`;
+    // } 
+
+    // let editingEvent = null;
+    let isEditing = false;
+
+    // /**
+	//  * @param {any} event
+	//  */
+    function enableEdit() {
+        // editingEvent = event;
+        isEditing = true;
+    }
 </script>
 
 <style>
@@ -48,10 +64,37 @@
         color: aliceblue;
     }
 
-    /* .acc-but {
-        height: 20%;
-        width: 40%;
-    } */
+    #b2s {
+        /* make the button smaller*/
+        font-size: 80%;
+        width: fit-content;
+        height: fit-content;
+    }
+
+    #b123 {
+        margin-top: 10px;
+        height: fit-content;
+        width: fit-content;
+        /* border-color: #10c15a;
+        color: #10c15a; */
+        border-color: yellow;
+        color: yellow;
+    }
+
+    #bred {
+        margin-top: 10px;
+        height: fit-content;
+        width: fit-content;
+        border-color: crimson;
+        color: crimson;
+    }
+
+    #crt-butt{
+        height: fit-content;
+        width: fit-content;
+        border-color: #10c15a;
+        color: #10c15a;
+    }
 </style>
 
 <ul class="ulc">
@@ -67,6 +110,7 @@
             {/if}
             <div class="events-div">
                 <br><br>
+                {#if getEvents(cl.club_id).length > 0}
                 <table>
                     <tr>
                         <th class="thcl">Event Name</th>
@@ -76,15 +120,38 @@
                         <th class="thcl">Registration Deadline</th>
                     </tr>
                     {#each getEvents(cl.club_id) as ev}
-                        <tr>
-                            <td>{ev.event_name}</td>
-                            <td>{ev.event_date}</td>
-                            <td>{ev.event_time}</td>
-                            <td>{ev.event_location}</td>
-                            <td class="ref-ded">{ev.registration_deadline}</td>
-                        </tr>
+                        {#if !isEditing}
+                            <tr>
+                                <td><input type="text" value="{ev.event_name}" readonly></td>
+                                <td><input type="date" id="date" name="date" value="{ev.event_date}" readonly></td>
+                                <td><input type="time" id="time" name="time" value="{ev.event_time}" readonly></td>
+                                <td><input type="text" value="{ev.event_location}" readonly></td>
+                                <td class="ref-ded"><input type="text" value="{ev.registration_deadline}" readonly></td>
+                                <a href="#" role="button" class="outline" id="b123" on:click={enableEdit}>Modify</a>
+                                <a href="#" role="button" class="outline" id="bred">Delete</a>
+                            </tr>
+                        {:else}
+                            <tr>
+                                <td><input type="text" value="{ev.event_name}"></td>
+                                <td><input type="date" id="date" name="date" value="{ev.event_date}"></td>
+                                <td><input type="time" id="time" name="time" value="{ev.event_time}"></td>
+                                <td><input type="text" value="{ev.event_location}"></td>
+                                <td class="ref-ded"><input type="text" value="{ev.registration_deadline}"></td>
+                                <a href="#" role="button" class="outline" id="b123">Save</a>
+                                <a href="#" role="button" class="outline" id="bred">Cancel</a>
+                            </tr>
+                        {/if}
                     {/each}
                 </table>
+                    <a href="#" role="button" class="outline" id="crt-butt">Create New Event</a>
+                {:else}
+                    <p class="notaccepting">No Events Scheduled</p>
+                {/if}
+
+                <!-- <div class="grid">
+                    <p>Want to create an event?</p>
+                    <a href="/clubs/{cid}/modify" role="button" class="secondary outline" id="b2s">Create Event</a>
+                </div> -->
             </div>
         {/if}
     {/each}
