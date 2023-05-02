@@ -113,6 +113,35 @@
             console.log(error);
         }
     }
+
+    let e_name = "";
+    let e_date = "";
+    let e_time = "";
+    let e_location = "";
+    let e_deadline = "";
+
+
+
+	async function createEvent(club_id: any,ename: any, edate:any, etime:any, elocation:any, edeadline: any) {
+        try {
+            const { data, error } = await supabase
+                .from('event')
+                .insert([
+                    { club_id: club_id, event_name: ename, event_date: edate, event_time: etime, event_location: elocation, registration_deadline: edeadline }
+                ])
+        } catch (error) {
+            console.log(error);
+        }
+        location.reload();
+	}
+
+
+	function cancelCreate(event: MouseEvent & { currentTarget: EventTarget & HTMLAnchorElement; }) {
+		// throw new Error("Function not implemented.");
+        // tooooooddooooooooo
+        console.log(event);
+        location.reload();
+	}
 </script>
 
 <style>
@@ -167,6 +196,14 @@
         border-color: #10c15a;
         color: #10c15a;
     }
+
+    #bcrt {
+        margin-top: 12px;
+        height: fit-content;
+        width: fit-content;
+        border-color: #10c15a;
+        color: #10c15a;
+    }
 </style>
 
 <ul class="ulc">
@@ -180,10 +217,11 @@
             {:else}
                 <p class="notaccepting">Not Recruiting Currently</p>
             {/if}
+            <h4>Live Events</h4>
             <div class="events-div">
                 <br><br>
                 {#if getEvents(cl.club_id).length > 0}
-                <table>
+                <table role="grid">
                     <tr>
                         <th class="thcl">Event Name</th>
                         <th class="thcl">Event Date</th>
@@ -230,16 +268,30 @@
                         {/if}
                     {/each}
                 </table>
-                    <a href="#" role="button" class="outline" id="crt-butt">Create New Event</a>
                 {:else}
                     <p class="notaccepting">No Events Scheduled</p>
-                    <a href="#" role="button" class="outline" id="crt-butt">Create New Event</a>
                 {/if}
-
-                <!-- <div class="grid">
-                    <p>Want to create an event?</p>
-                    <a href="/clubs/{cid}/modify" role="button" class="secondary outline" id="b2s">Create Event</a>
-                </div> -->
+            </div>
+            <h4>Create a New Event</h4>
+            <div class="crt-event-cls">
+                <table role="grid">
+                    <tr>
+                        <th class="thcl">Event Name</th>
+                        <th class="thcl">Event Date</th>
+                        <th class="thcl">Event Time</th>
+                        <th class="thcl">Event Location</th>
+                        <th class="thcl">Registration Deadline</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" placeholder="Event Name" required bind:value={e_name}></td>
+                        <td><input type="date" id="date" name="date" placeholder="date" required bind:value={e_date}></td>
+                        <td><input type="time" id="time" name="time" placeholder="time" required bind:value={e_time}></td>
+                        <td><input type="text" placeholder="location" required bind:value={e_location}></td>
+                        <td><input type="date" id="date" name="date" placeholder="deadline" required bind:value={e_deadline}></td>
+                        <a href="#" role="button" class="outline" id="bcrt" on:click={async () => await createEvent(cl.club_id,e_name,e_date,e_time,e_location,e_deadline)}>Create</a>
+                        <a href="#" role="button" class="outline" id="bred" on:click={cancelCreate}>Cancel</a>
+                    </tr>
+                </table>
             </div>
         {/if}
     {/each}
