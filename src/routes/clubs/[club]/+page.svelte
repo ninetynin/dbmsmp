@@ -1,5 +1,6 @@
-<script>
+<script lang="ts">
     import { page } from "$app/stores";
+	import { supabase } from "$lib/supabaseClient";
     const cid = $page.params.club;
 
     export let data;
@@ -8,7 +9,7 @@
     // console.log(registrations.length);
     // console.log(clubs.length);
 
-    const findRegLink = (/** @type {any} */ cid) => {
+    const findRegLink = (/** @type {any} */ cid: any) => {
         for (let i = 0; i < registrations.length; i++) {
             if (registrations[i].club_id === cid) {
                 return registrations[i].registration_link;
@@ -16,7 +17,7 @@
         }
     };
 
-    const getEvents = (/** @type {any} */ cid) => {
+    const getEvents = (/** @type {any} */ cid: any) => {
         let eventsArr = [];
         for (let i = 0; i < events.length; i++) {
             if (events[i].club_id === cid) {
@@ -40,6 +41,59 @@
     function enableEdit() {
         // editingEvent = event;
         isEditing = true;
+    }
+
+
+    const updateInput = async (/** @type {any} */ Input: { [x: string]: any; } , InputInput: string) => {
+        console.table(Input);
+    }
+
+    const saveInput = async(/** @type {any} */ Input: { [x: string]: any; }) => {
+        console.table(Input);
+        try {
+            const { data, error } = await supabase
+                .from('event')
+                .update({ event_name : Input.event_name })
+                .eq('club_id', Input.club_id);
+        } catch (error) {
+            console.log(error);
+        }
+        try {
+            const { data, error } = await supabase
+                .from('event')
+                .update({ event_date : Input.event_date })
+                .eq('club_id', Input.club_id);
+        } catch (error) {
+            console.log(error);
+        }
+        try {
+            const { data, error } = await supabase
+                .from('event')
+                .update({ event_time : Input.event_time })
+                .eq('club_id', Input.club_id);
+        } catch (error) {
+            console.log(error);
+        }
+
+        try {
+            const { data, error } = await supabase
+                .from('event')
+                .update({ event_location : Input.event_location })
+                .eq('club_id', Input.club_id);
+        } catch (error) {
+            console.log(error);
+        }
+
+        try {
+            const { data, error } = await supabase
+                .from('event')
+                .update({ registration_deadline : Input.registration_deadline })
+                .eq('club_id', Input.club_id);
+        } catch (error) {
+            console.log(error);
+        }
+
+        isEditing = false;
     }
 </script>
 
@@ -126,18 +180,33 @@
                                 <td><input type="date" id="date" name="date" value="{ev.event_date}" readonly></td>
                                 <td><input type="time" id="time" name="time" value="{ev.event_time}" readonly></td>
                                 <td><input type="text" value="{ev.event_location}" readonly></td>
-                                <td class="ref-ded"><input type="text" value="{ev.registration_deadline}" readonly></td>
+                                <td><input type="date" id="date" name="date" value="{ev.registration_deadline}" readonly></td>
                                 <a href="#" role="button" class="outline" id="b123" on:click={enableEdit}>Modify</a>
                                 <a href="#" role="button" class="outline" id="bred">Delete</a>
                             </tr>
                         {:else}
                             <tr>
-                                <td><input type="text" value="{ev.event_name}"></td>
-                                <td><input type="date" id="date" name="date" value="{ev.event_date}"></td>
-                                <td><input type="time" id="time" name="time" value="{ev.event_time}"></td>
-                                <td><input type="text" value="{ev.event_location}"></td>
-                                <td class="ref-ded"><input type="text" value="{ev.registration_deadline}"></td>
-                                <a href="#" role="button" class="outline" id="b123">Save</a>
+                                <td><input type="text" value="{ev.event_name}" on:input={(e)=>{
+                                    ev.event_name = e.currentTarget.value;
+                                    updateInput(ev,"event_name")
+                                }}></td>
+                                <td><input type="date" id="date" name="date" value="{ev.event_date}" on:input={(e)=>{
+                                    ev.event_date = e.currentTarget.value;
+                                    updateInput(ev,"event_date")
+                                }}></td>
+                                <td><input type="time" id="time" name="time" value="{ev.event_time}" on:input={(e)=>{
+                                    ev.event_time = e.currentTarget.value;
+                                    updateInput(ev,"event_time")
+                                }}></td>
+                                <td><input type="text" value="{ev.event_location}" on:input={(e)=>{
+                                    ev.event_location = e.currentTarget.value;
+                                    updateInput(ev,"event_location")
+                                }}></td>
+                                <td><input type="date" id="date" name="date" value="{ev.registration_deadline}" on:input={(e)=>{
+                                    ev.registration_deadline = e.currentTarget.value;
+                                    updateInput(ev,"registration_deadline")
+                                }}></td>
+                                <a href="#" role="button" class="outline" id="b123" on:click={(e)=>saveInput(ev)}>Save</a>
                                 <a href="#" role="button" class="outline" id="bred">Cancel</a>
                             </tr>
                         {/if}
