@@ -95,6 +95,24 @@
 
         isEditing = false;
     }
+
+    const cancelInput = async(/** @type {any} */ Input: { [x: string]: any; }) => {
+        isEditing = false;
+        location.reload();
+    }
+
+    const deleteEvent = async(/** @type {any} */ Input: { [x: string]: any; }) => {
+        console.log(Input);
+        try {
+            const { data, error } = await supabase
+                .from('event')
+                .delete()
+                .eq('club_id', Input.club_id)
+            await location.reload();
+        } catch (error) {
+            console.log(error);
+        }
+    }
 </script>
 
 <style>
@@ -182,7 +200,7 @@
                                 <td><input type="text" value="{ev.event_location}" readonly></td>
                                 <td><input type="date" id="date" name="date" value="{ev.registration_deadline}" readonly></td>
                                 <a href="#" role="button" class="outline" id="b123" on:click={enableEdit}>Modify</a>
-                                <a href="#" role="button" class="outline" id="bred">Delete</a>
+                                <a href="#" role="button" class="outline" id="bred" on:click={async () => await deleteEvent(ev)}>Delete</a>
                             </tr>
                         {:else}
                             <tr>
@@ -207,7 +225,7 @@
                                     updateInput(ev,"registration_deadline")
                                 }}></td>
                                 <a href="#" role="button" class="outline" id="b123" on:click={(e)=>saveInput(ev)}>Save</a>
-                                <a href="#" role="button" class="outline" id="bred">Cancel</a>
+                                <a href="#" role="button" class="outline" id="bred" on:click={(e)=>cancelInput(ev)}>Cancel</a>
                             </tr>
                         {/if}
                     {/each}
@@ -215,6 +233,7 @@
                     <a href="#" role="button" class="outline" id="crt-butt">Create New Event</a>
                 {:else}
                     <p class="notaccepting">No Events Scheduled</p>
+                    <a href="#" role="button" class="outline" id="crt-butt">Create New Event</a>
                 {/if}
 
                 <!-- <div class="grid">
