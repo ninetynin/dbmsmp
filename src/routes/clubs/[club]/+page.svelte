@@ -107,7 +107,8 @@
             const { data, error } = await supabase
                 .from('event')
                 .delete()
-                .eq('club_id', Input.club_id)
+                // .eq('club_id', Input.club_id)
+                .eq('event_id',Input.event_id)
             await location.reload();
         } catch (error) {
             console.log(error);
