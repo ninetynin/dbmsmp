@@ -44,6 +44,8 @@
         <li></li>
         <li><a href="/category" class="makeitlight">Catogories</a></li>
         <li></li>
+        <li><a href="/events" class="makeitlight">Events</a></li>
+        <li></li>
         <li><input type="search" id="search" name="search" placeholder="Search" on:keyup={
         e => {if (e.key === 'Enter') window.location.href = `/search/${e.target.value}`;
         }}></li>
