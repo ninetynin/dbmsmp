@@ -3,6 +3,11 @@
   let { club } = data;
   $: ({ club } = data);
 
+  // let { search } = data;
+  // $: ({ search } = data);
+
+  // console.log(search[0].name);
+
   function navigateToClub(club_name: any) {
     window.location.href = `/clubs/${club_name}`;
   } // there is delay i have no clue why check if there is time later on to fix this

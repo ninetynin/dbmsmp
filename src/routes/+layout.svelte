@@ -1,3 +1,7 @@
+<script>
+
+</script>
+
 <style>
     @import '@picocss/pico';
     .heading {
@@ -18,8 +22,31 @@
         color: rgb(255, 255, 255);
         text-decoration: none;
     }
+
+    #id {
+        width: 10%;
+        height: 10%;
+    }
+
+    .makeitlight {
+        color: rgb(172, 169, 169);
+    }
 </style>
 
 <!-- <nav></nav> -->
-<h1 class="heading"><a href="/">DBSMP</a></h1>
+<!-- <h1 class="heading"><a href="/"><strong>DBSMP</strong></a></h1> -->
+<nav>
+    <!-- <ul></ul> -->
+    <ul>
+      <!-- <li><strong>Brand</strong></li> -->
+      <li></li>
+        <li><a href="/"><strong>DBSMP</strong></a></li>
+        <li></li>
+        <li><a href="/category" class="makeitlight">Catogories</a></li>
+        <li></li>
+        <li><input type="search" id="search" name="search" placeholder="Search" on:keyup={
+        e => {if (e.key === 'Enter') window.location.href = `/search/${e.target.value}`;
+        }}></li>
+    </ul>
+  </nav>
 <slot />
