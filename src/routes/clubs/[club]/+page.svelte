@@ -27,6 +27,14 @@
         return eventsArr;
     };
 
+    const getAdvisor = (/** @type {any} */ cid: any) => {
+        for (let i = 0; i < advisors.length; i++) {
+            if (advisors[i].club_id === cid) {
+                return advisors[i];
+            }
+        }
+    };
+
     // function Modifycluburl() {
     //     // window.location.href = `/clubs/${cid}/modify`;
     //     window.location.href = `/clubs/${cid}/modify`;
@@ -166,6 +174,12 @@
         color: aliceblue;
     }
 
+    .club-article {
+        height: fit-content;
+        width: fit-content;
+        margin: 0 auto;
+    }
+
     #b2s {
         /* make the button smaller*/
         font-size: 80%;
@@ -218,6 +232,15 @@
             {:else}
                 <p class="notaccepting">Not Recruiting Currently</p>
             {/if}
+            <!-- <article>
+
+            </article> -->
+            <h4>Club Advisor</h4>
+            <article class="club-article">
+                <h3>{getAdvisor(cl.club_id).advisor_name}</h3>
+                <p>{getAdvisor(cl.club_id).department}</p>
+                <p>{getAdvisor(cl.club_id).email}</p>
+            </article>
             <h4>Live Events</h4>
             <div class="events-div">
                 <br><br>
