@@ -21,5 +21,5 @@
 </style>
 
 <!-- <nav></nav> -->
-<h1 class="heading"><a href="/">DBSMP</a></h1>
+<h1 class="heading"><a href="/"><strong>DBSMP</strong></a></h1>
 <slot />
