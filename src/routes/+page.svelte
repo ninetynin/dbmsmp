@@ -42,9 +42,6 @@
 </style>
 
 <main class="container-fluid">
-  <input type="search" id="search" name="search" placeholder="Search" on:keyup={
-    e => {if (e.key === 'Enter') window.location.href = `/search/${e.target.value}`;
-  }}>
   <ul>
     {#each club as cl}
       <article class="club-article" on:click={() => navigateToClub(cl.club_name)}>
